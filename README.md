@@ -186,6 +186,10 @@ Complete exploration of all 17 features before any modeling.
 
 **Techniques used:** Distribution analysis, KDE plots, Cohen's d class separation, Pearson correlation heatmap, IQR-based outlier detection, missing value matrix visualization.
 
+![Feature Correlations](charts/final_feature_correlations.png)
+*Figure 7: Feature Correlation Heatmap — Illustrates the linear relationships between predictors. Note the low correlation with the target, consistent with synthetic uniform data.*
+
+
 ---
 
 ### Task 2 — Feature Engineering
@@ -201,6 +205,10 @@ Five domain-driven features engineered with explicit business justification:
 | `age_risk_segment` | Age → 4 bins | — | Non-linear age-default curve |
 
 **`loan_to_income` beat raw `InterestRate`** — the engineered ratio feature (d=0.463) outperformed the single strongest raw predictor (d=0.420), validating the engineering approach.
+
+![Feature Engineering Validation](charts/feature_engineering_validation.png)
+*Figure 8: Feature Engineering Validation — Cohen's d separation for engineered features vs source features. 'loan_to_income' shows the highest separation power.*
+
 
 **Two separate preprocessing pipelines:**
 - Tree models (XGBoost, LightGBM, RF): unscaled features, scaling is irrelevant to split-based models
@@ -248,6 +256,13 @@ F1       : 0.3823
 Recall   : 53.5%    (catches more than half of all actual defaults)
 Precision: 29.8%
 ```
+
+![Test Set Metrics](charts/final_test_evaluation.png)
+*Figure 9: Final Test Evaluation Summary — Visual comparison of all key metrics on the unsealed test set.*
+
+![KS Plot](charts/ks_plot.png)
+*Figure 10: Kolmogorov-Smirnov (KS) Plot — Final model shows a KS Statistic of 0.3930, indicating strong discriminatory power between defaulters and non-defaulters.*
+
 
 ![SHAP Summary](charts/shap_summary_beeswarm.png)
 *Figure 5: SHAP Beeswarm Plot — Shows how much each feature pushes an applicant toward defaulting (Positive SHAP) or not (Negative SHAP).*
@@ -301,6 +316,13 @@ Base rate (average applicant)  : -0.278 log-odds
 ─────────────────────────────────────────
 Predicted log-odds             : +4.433  → probability 0.9881
 ```
+
+![SHAP Local Explanation](charts/shap_local_explanation.png)
+*Figure 11: SHAP Local Explanation (Waterfall) — Decomposing a high-risk prediction into individual feature contributions for transparency.*
+
+![SHAP Dependence Plots](charts/shap_dependence_plots.png)
+*Figure 12: SHAP Dependence Plots — Visualizing the non-linear relationship between feature values (e.g., Age) and their impact on the model's prediction.*
+
 
 ---
 

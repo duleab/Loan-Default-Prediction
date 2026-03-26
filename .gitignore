@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+ENV/
+
+# Jupyter
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+
+# Large Data & Models (Do not push to GitHub)
+outputs/*.csv
+outputs/*.pkl
+outputs/*.json
+outputs/*.txt
+
+# Reports (As requested)
+report/*.docx
+
+# OS files
+.DS_Store
+Thumbs.db
